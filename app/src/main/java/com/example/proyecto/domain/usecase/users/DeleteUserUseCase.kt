@@ -1,6 +1,6 @@
 package com.example.proyecto.domain.usecase.users
 
-import com.example.proyecto.data.source.remote.UserRepository
+import com.example.proyecto.di.UserRepository
 
 class DeleteUserUseCase(private val userRepository: UserRepository) {
     // Implementamos la lógica del caso de uso dentro de este método

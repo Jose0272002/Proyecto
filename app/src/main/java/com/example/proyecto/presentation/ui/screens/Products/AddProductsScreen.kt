@@ -121,12 +121,15 @@ fun AddProductScreen(navController: NavController,
                     placeholder = { Text("Descripción del artículo") },
                     modifier = Modifier
                         .fillMaxWidth()
+                        .height(150.dp)
                 )
             }
             Spacer(modifier = Modifier.height(30.dp))
             Row {
-                Button(onClick = { /*TODO*/ }) {
-
+                Button(onClick = {
+                    AddProductsViewModel.save()
+                }) {
+                    Text( "Añadir Producto")
                 }
             }
 

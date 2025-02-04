@@ -1,6 +1,6 @@
 package com.example.proyecto.domain.usecase.users
 
-import com.example.proyecto.data.source.remote.UserRepository
+import com.example.proyecto.di.UserRepository
 import com.example.proyecto.domain.model.User
 import kotlinx.coroutines.flow.Flow
 

@@ -1,4 +1,4 @@
-package com.example.proyecto.data.source.remote
+package com.example.proyecto.di
 
 import com.example.proyecto.domain.model.User
 import com.google.firebase.firestore.FirebaseFirestore
