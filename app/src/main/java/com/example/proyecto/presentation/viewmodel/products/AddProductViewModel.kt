@@ -14,15 +14,10 @@ class AddProductViewModel(
     val addProductUseCase: AddProductsUseCase
 ) : ViewModel() {
     private val _product = MutableStateFlow(
-        Product(0, "", "", "", 0)
+        Product()
     )
     val product: StateFlow<Product> = _product
 
-    fun setId(id: Int) {
-        _product.value = _product.value.copy(
-            id = id
-        )
-    }
 
     fun setName(name: String) {
         _product.value = _product.value.copy(

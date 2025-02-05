@@ -30,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.proyecto.presentation.navigation.Screen
 import com.example.proyecto.presentation.viewmodel.products.AddProductViewModel
@@ -39,9 +38,9 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddProductScreen(navController: NavController,
-                AddProductsViewModel: AddProductViewModel = koinViewModel()
+                     addProductsViewModel: AddProductViewModel = koinViewModel()
 ) {
-    val product by AddProductsViewModel.product.collectAsState()
+    val product by addProductsViewModel.product.collectAsState()
     var expanded by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -90,22 +89,11 @@ fun AddProductScreen(navController: NavController,
         }
     ) { paddingValues ->
 
-        Column {
-            Row {
-                TextField(
-                    value = product.id.toString(),
-                    onValueChange = { AddProductsViewModel.setId(it.toInt()) },
-                    label = { Text("Id") },
-                    placeholder = { Text("Id del artículo") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(paddingValues)
-                )
-            }
+        Column(Modifier.padding(paddingValues)) {
             Row {
                 TextField(
                     value = product.name,
-                    onValueChange = { AddProductsViewModel.setName(it) },
+                    onValueChange = { addProductsViewModel.setName(it) },
                     label = { Text("Artículo") },
                     placeholder = { Text("Nombre del artículo") },
                     modifier = Modifier
@@ -116,7 +104,7 @@ fun AddProductScreen(navController: NavController,
             Row {
                 TextField(
                     value = product.description,
-                    onValueChange = { AddProductsViewModel.setDescription(it) },
+                    onValueChange = { addProductsViewModel.setDescription(it) },
                     label = { Text("Descripción") },
                     placeholder = { Text("Descripción del artículo") },
                     modifier = Modifier
@@ -127,7 +115,7 @@ fun AddProductScreen(navController: NavController,
             Spacer(modifier = Modifier.height(30.dp))
             Row {
                 Button(onClick = {
-                    AddProductsViewModel.save()
+                    addProductsViewModel.save()
                 }) {
                     Text( "Añadir Producto")
                 }

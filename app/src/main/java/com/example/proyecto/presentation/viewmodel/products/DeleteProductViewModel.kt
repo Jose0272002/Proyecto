@@ -10,7 +10,7 @@ class DeleteProductViewModel(
 
     fun deleteProduct(id: Int) {
         viewModelScope.launch {
-            val result = deleteProductsUseCase.invoke(id)
+            val result = deleteProductsUseCase.invoke(id.toString())
             // Handle result if needed
         }
     }

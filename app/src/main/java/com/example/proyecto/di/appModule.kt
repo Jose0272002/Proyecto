@@ -40,7 +40,7 @@ val appModule = module {
     // Crea el viewModel con las dependencias que tenga definidas
 
     // viewModel { ProductsScreenViewModel(get(), get()) }
-    viewModel { ProductViewModel(get()) }
+    viewModel { ProductViewModel(get(), get()) }
     viewModel { DeleteProductViewModel(get()) }
     viewModel { UsernamePasswordViewModel() }
     viewModel { UsersScreenViewModel(get(), get()) }
