@@ -7,13 +7,13 @@ data class Product(
     val name: String,
     val type: String,
     val description: String,
-    val value: Int,
+    val value: Double?,
 ){
     constructor(): this(
         id = "",
         name = "",
         type = "",
         description = "",
-        value = 0
+        value = 0.0
     )
 }

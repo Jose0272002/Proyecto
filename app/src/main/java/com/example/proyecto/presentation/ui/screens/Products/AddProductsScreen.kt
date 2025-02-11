@@ -7,14 +7,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -75,18 +73,8 @@ fun AddProductScreen(navController: NavController,
 
                 }
             )
-        },
-        floatingActionButton ={
-            FloatingActionButton(onClick = {
-                navController.navigate(Screen.AddProducts.route)
-            }) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Añadir"
-                )
-
-            }
         }
+
     ) { paddingValues ->
 
         Column(Modifier.padding(paddingValues)) {
@@ -100,6 +88,35 @@ fun AddProductScreen(navController: NavController,
                         .fillMaxWidth()
                 )
             }
+
+            Spacer(modifier = Modifier.height(30.dp))
+            Row {
+                TextField(
+                    value = product.type,
+                    onValueChange = { addProductsViewModel.setType(it) },
+                    label = { Text("Tipo") },
+                    placeholder = { Text("Tipo del artículo") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+            }
+            Spacer(modifier = Modifier.height(30.dp))
+            Row {
+                TextField(
+                    value = product.value?.toInt().toString(),
+                    onValueChange = {
+                        try {
+                            addProductsViewModel.setValue(it.toInt().toDouble())
+                        } catch (e: NumberFormatException) {
+                        }
+                    },
+                    label = { Text("Precio") },
+                    placeholder = { Text("Precio del artículo") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+            }
+
             Spacer(modifier = Modifier.height(30.dp))
             Row {
                 TextField(
@@ -116,6 +133,7 @@ fun AddProductScreen(navController: NavController,
             Row {
                 Button(onClick = {
                     addProductsViewModel.save()
+                    navController.popBackStack()
                 }) {
                     Text( "Añadir Producto")
                 }

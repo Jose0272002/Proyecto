@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -113,7 +115,10 @@ fun ProductCard(product: Product,
                 navController: NavController) {
 
     var isExpanded by remember { mutableStateOf(false) }
-    Card(onClick = { isExpanded = !isExpanded }) {
+    Card(onClick = { isExpanded = !isExpanded }, modifier = Modifier
+        .fillMaxWidth()
+        .padding(3.dp)
+    ) {
         Row {
             Column {
                 Icon(
@@ -128,11 +133,18 @@ fun ProductCard(product: Product,
             Column {
                 Text(text = product.name)
                 if (isExpanded) {
-                    Text(text = product.description, modifier = Modifier.padding(1.dp))
-                    Text(text = product.type, modifier = Modifier.padding(1.dp))
-                    Button(onClick = {navController.navigate(Screen.Products.route)},
-                        enabled = true) {
-                        Text("modificar")
+                    Column {
+                        Row {
+                            Text(text = product.description, modifier = Modifier.padding(1.dp))
+                            Spacer(modifier = Modifier.padding(10.dp))
+                            Text(text = product.type, modifier = Modifier.padding(1.dp))
+                            Text(text = product.value.toString() + "€" , modifier = Modifier.padding(1.dp))
+                        }
+                        Button(onClick = {navController.navigate(Screen.Products.route)},
+                            enabled = true) {
+                            Text("modificar")
+                    }
+
                     }
                 }
             }

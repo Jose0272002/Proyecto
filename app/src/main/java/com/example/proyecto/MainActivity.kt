@@ -25,12 +25,12 @@ class MainActivity : ComponentActivity() {
             ProyectoTheme {
                 NavGraph()
                 val products = listOf(
-                    Product("","martillo","herramienta", "martillo de mango rojo",23),
-                    Product("", "Tuerca", "material", "Tamaño pequeño", 2),
-                    Product("", "Destornillador estrella", "herramienta", "Herramienta manual",4),
-                    Product("", "Martillo", "herramienta", "Martillo de plástico",3),
-                    Product("", "Desatascador", "herramienta", "Tamaño grande",3),
-                    Product("", "Destornillador plano", "herramienta", "Herramienta manual",4)
+                    Product("","martillo","herramienta", "martillo de mango rojo",23.0),
+                    Product("", "Tuerca", "material", "Tamaño pequeño", 2.0),
+                    Product("", "Destornillador estrella", "herramienta", "Herramienta manual",4.0),
+                    Product("", "Martillo", "herramienta", "Martillo de plástico",3.0),
+                    Product("", "Desatascador", "herramienta", "Tamaño grande",3.0),
+                    Product("", "Destornillador plano", "herramienta", "Herramienta manual",4.0)
                 )
             }
         }
