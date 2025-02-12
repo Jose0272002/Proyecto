@@ -5,8 +5,10 @@ import com.example.proyecto.data.source.remote.ProductFirestoreRepository
 import com.example.proyecto.domain.usecase.products.AddProductsUseCase
 import com.example.proyecto.domain.usecase.products.DeleteProductsUseCase
 import com.example.proyecto.domain.usecase.products.ListProductsUseCase
+import com.example.proyecto.domain.usecase.products.ModifyProductsUseCase
 import com.example.proyecto.domain.usecase.users.DeleteUserUseCase
 import com.example.proyecto.domain.usecase.users.GetUsersUseCase
+import com.example.proyecto.presentation.ui.screens.Products.ModifyProductScreen
 import com.example.proyecto.presentation.viewmodel.login.UsernamePasswordViewModel
 import com.example.proyecto.presentation.viewmodel.products.AddProductViewModel
 import com.example.proyecto.presentation.viewmodel.products.DeleteProductViewModel
@@ -35,6 +37,7 @@ val appModule = module {
     factory { AddProductsUseCase(get()) }
     factory { ListProductsUseCase(get()) }
     factory { DeleteProductsUseCase(get()) }
+    factory { ModifyProductsUseCase(get()) }
 
     // VIEW MODELS
     // Crea el viewModel con las dependencias que tenga definidas

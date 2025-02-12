@@ -37,6 +37,23 @@ class ProductFirestoreRepository(val firestore: FirebaseFirestore) {
         }
     }
 
+    suspend fun getProductById(id: String?): Product? {
+        return id?.let {
+            try {
+                val documentSnapshot = collection.document(id).get().await()
+                documentSnapshot.toObject(Product::class.java)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        }
+    }
+
+    suspend fun update(product: Product) {
+        collection.document(product.id).set(product).await()
+    }
+
+
     suspend fun save(product: Product) {
         collection.add(product).await()
     }
@@ -48,4 +65,5 @@ class ProductFirestoreRepository(val firestore: FirebaseFirestore) {
             .await()
 
     }
+
 }

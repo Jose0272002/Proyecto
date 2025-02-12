@@ -4,5 +4,5 @@ sealed class Screen(val route:String){
     object Login: Screen("login")
     object Products: Screen("products")
     object AddProducts :Screen("addProducts")
-
+    object ModifyProducts :Screen("modifyProducts")
 }

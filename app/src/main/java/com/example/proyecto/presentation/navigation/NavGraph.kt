@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.proyecto.presentation.ui.screens.Products.AddProductScreen
+import com.example.proyecto.presentation.ui.screens.Products.ModifyProductScreen
 import com.example.proyecto.presentation.ui.screens.Products.ProductScreen
 import com.example.proyecto.presentation.ui.screens.login.LoginScreen
 
@@ -21,6 +22,9 @@ fun NavGraph(startDestination: String = Screen.Login.route){
         }
         composable(Screen.AddProducts.route) {
             AddProductScreen(navController)
+        }
+        composable(Screen.ModifyProducts.route) {
+            ModifyProductScreen(navController)
         }
     }
 

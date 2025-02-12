@@ -8,10 +8,9 @@ class DeleteProductViewModel(
     private val deleteProductsUseCase: DeleteProductsUseCase
 ) : ViewModel() {
 
-    fun deleteProduct(id: Int) {
+    fun deleteProduct(id: String) {
         viewModelScope.launch {
-            val result = deleteProductsUseCase.invoke(id.toString())
-            // Handle result if needed
+            deleteProductsUseCase.invoke(id)
         }
     }
 

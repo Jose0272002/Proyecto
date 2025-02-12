@@ -103,10 +103,10 @@ fun AddProductScreen(navController: NavController,
             Spacer(modifier = Modifier.height(30.dp))
             Row {
                 TextField(
-                    value = product.value?.toInt().toString(),
+                    value = product.value?.toDouble().toString(),
                     onValueChange = {
                         try {
-                            addProductsViewModel.setValue(it.toInt().toDouble())
+                            addProductsViewModel.setValue(it.toDouble())
                         } catch (e: NumberFormatException) {
                         }
                     },
